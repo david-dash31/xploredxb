@@ -189,7 +189,8 @@ ul {
     height: 100vh;
     min-height: 600px;
     background-image: url('../assets/images/hero_dubai.png');
-    background-size: 110%;
+    background-size: cover;
+    background-repeat: no-repeat;
     background-position: 0% 50%;
     position: relative;
     display: flex;
@@ -467,6 +468,109 @@ ul {
     box-shadow: var(--shadow);
 }
 
+/* Tours Page Expansions */
+.deal-badge {
+    position: absolute;
+    top: 20px;
+    right: -20px;
+    background: #ff4757;
+    color: white;
+    padding: 10px 30px;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+    z-index: 10;
+}
+
+.feature-list {
+    list-style: none;
+    margin: 20px 0;
+}
+.feature-list li {
+    margin-bottom: 10px;
+    padding-left: 25px;
+    position: relative;
+}
+.feature-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+.price-tag {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+.price-tag small {
+    font-size: 1rem;
+    color: #666;
+    font-weight: 400;
+}
+
+.tour-badge {
+    display: inline-block;
+    background: var(--primary);
+    color: var(--dark);
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+.feature-box {
+    text-align: center;
+    padding: 30px 20px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    transition: var(--transition);
+}
+.feature-box:hover {
+    transform: translateY(-10px);
+    background: rgba(255,255,255,0.1);
+}
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: var(--primary);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+.testimonial-card {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+.testimonial-card .stars {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+.testimonial-card .quote {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 20px;
+}
+.testimonial-card h4 {
+    color: var(--dark);
+    font-weight: 600;
+}
+
 /* Responsive */
 @media (max-width: 992px) {
     .hero-title { font-size: 3.5rem; }
@@ -501,8 +605,6 @@ ul {
 
     .nav-link { color: var(--dark); }
     .header .nav-link { color: var(--dark); } /* force dark links on mobile */
-    .header .logo { color: var(--dark); } /* force dark logo on mobile */
-    .header .menu-toggle .bar { background-color: var(--dark); }
 
     .hero-title { font-size: 2.5rem; }
     .hero-actions { flex-direction: column; }
