@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Fleet - XploreDXB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .page-header { background: linear-gradient(to right, var(--dark), var(--primary-dark)); padding: 150px 0 80px; text-align: center; color: white; }
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><img src="assets/logo.png" alt="XploreDXB Logo" style="height: 75px; width: auto; max-height: 100%;"></a>
+            <nav class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="tours.html" class="nav-link">Tours</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="fleets.html" class="nav-link active">Fleets</a></li>
+                    <li><a href="contact.html" class="nav-link btn-primary">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <div class="container">
+                <h1 class="section-title" style="color: white;">Our Premium Fleet</h1>
+                <p>Travel in style and comfort with our top-of-the-line vehicles.</p>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="container">
+                <div class="cards-grid">
+                    <div class="route-card" style="background-image: url('assets/images/card_chauffeur.png');">
+                        <div class="card-overlay">
+                            <h3>Luxury Sedans</h3>
+                            <p>Perfect for business executives or couples looking for a smooth ride across the city.</p>
+                            <a href="contact.html" class="card-link">Book Now &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Reuse the image for demonstration purposes -->
+                    <div class="route-card" style="background-image: url('assets/images/card_customize.png');">
+                        <div class="card-overlay">
+                            <h3>Premium SUVs</h3>
+                            <p>Ideal for families or desert safaris, offering maximum comfort and safety.</p>
+                            <a href="contact.html" class="card-link">Book Now &rarr;</a>
+                        </div>
+                    </div>
+                    <div class="route-card" style="background-image: url('assets/images/hero_dubai.png');">
+                        <div class="card-overlay">
+                            <h3>Luxury Vans</h3>
+                            <p>Spacious seating for groups, ensuring everyone travels together in luxury.</p>
+                            <a href="contact.html" class="card-link">Book Now &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content"><div class="footer-bottom" style="grid-column: 1 / -1; text-align: center;"><p>&copy; 2026 XploreDXB. All rights reserved.</p></div></div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>

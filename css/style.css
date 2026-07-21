@@ -1,0 +1,511 @@
+/* CSS Variables for Theming */
+:root {
+    --primary: #c9933b; /* Premium Gold */
+    --primary-dark: #a8792c;
+    --secondary: #242424; /* Dark gray for text */
+    --light: #f8f9fa;
+    --dark: #111111; /* Very dark for background elements */
+    --white: #ffffff;
+    --transition: all 0.3s ease;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --border-radius: 12px;
+}
+
+/* Reset & Global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    color: var(--secondary);
+    background-color: var(--white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 80px 0;
+}
+
+.section-header {
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--dark);
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0;
+}
+
+/* Buttons */
+.btn-primary, .btn-secondary {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--white) !important;
+    box-shadow: 0 4px 15px rgba(201, 147, 59, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(201, 147, 59, 0.4);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
+.btn-secondary:hover {
+    background-color: var(--white);
+    color: var(--dark);
+}
+
+/* Header & Nav */
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 10px 0;
+    background: transparent;
+}
+
+
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+.nav-menu {
+    display: flex;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-link {
+    color: var(--white);
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: var(--transition);
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link.btn-primary::after {
+    display: none;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--white);
+    transition: var(--transition);
+}
+
+.header.scrolled .menu-toggle .bar {
+    background-color: var(--dark);
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    min-height: 600px;
+    background-image: url('../assets/images/hero_dubai.png');
+    background-size: 110%;
+    background-position: 0% 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    animation: panBg 25s infinite alternate linear;
+}
+
+@keyframes panBg {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: var(--white);
+    max-width: 800px;
+    text-align: left;
+    animation: fadeInUp 1s ease forwards;
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-title span {
+    color: var(--primary);
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+}
+
+/* Best Routes Section */
+.routes-section {
+    background-color: var(--light);
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.route-card {
+    height: 500px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.route-card:hover {
+    transform: translateY(-10px);
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    padding: 30px 20px;
+    color: var(--white);
+    transition: var(--transition);
+}
+
+.card-overlay h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--primary);
+}
+
+.card-overlay p {
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.card-link {
+    color: var(--white);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+.card-link:hover {
+    color: var(--primary);
+}
+
+/* Split Layout (About Snippet) */
+.split-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.split-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--dark);
+}
+
+.split-content p {
+    margin-bottom: 30px;
+    color: #555;
+    font-size: 1.1rem;
+}
+
+.split-image {
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: var(--shadow);
+}
+
+/* CTA Section */
+.cta-section {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: var(--white);
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.cta-container h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.cta-container p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--dark);
+    color: #aaa;
+    padding: 80px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.footer-brand .logo {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.footer h4 {
+    color: var(--white);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+    padding-left: 5px;
+}
+
+.footer-contact p {
+    margin-bottom: 10px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* City Tour Section */
+.city-tour-section {
+    position: relative;
+    background-image: url('../assets/images/hero_dubai.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 100px 0;
+}
+
+.city-tour-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to right, rgba(0, 30, 30, 0.95), rgba(0, 150, 150, 0.85));
+    z-index: 1;
+}
+
+.city-tour-text {
+    padding-right: 40px;
+}
+
+.city-tour-text .section-title {
+    margin-top: 20px;
+    font-size: 2.5rem;
+    line-height: 1.2;
+}
+
+.text-white {
+    color: var(--white) !important;
+}
+
+.pill-tag {
+    display: inline-block;
+    padding: 5px 15px;
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--white);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.btn-cyan {
+    background-color: var(--white);
+    color: #00bcd4 !important;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    padding: 15px 35px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.btn-cyan:hover {
+    background-color: #00bcd4;
+    color: var(--white) !important;
+}
+
+.city-tour-img {
+    background-image: url('../assets/images/city_tour.png');
+    border-radius: 10px;
+    height: 450px;
+    box-shadow: var(--shadow);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .hero-title { font-size: 3.5rem; }
+    .split-layout { grid-template-columns: 1fr; }
+    .split-image { height: 400px; order: -1; }
+}
+
+@media (max-width: 768px) {
+    .menu-toggle { display: flex; }
+    
+    .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        padding: 20px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: clip-path 0.4s ease-in-out;
+    }
+
+    .nav-menu.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .nav-list {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .nav-link { color: var(--dark); }
+    .header .nav-link { color: var(--dark); } /* force dark links on mobile */
+    .header .logo { color: var(--dark); } /* force dark logo on mobile */
+    .header .menu-toggle .bar { background-color: var(--dark); }
+
+    .hero-title { font-size: 2.5rem; }
+    .hero-actions { flex-direction: column; }
+    
+    .cta-container h2 { font-size: 2rem; }
+}

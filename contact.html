@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - XploreDXB</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .page-header { background: linear-gradient(to right, var(--dark), var(--primary-dark)); padding: 150px 0 80px; text-align: center; color: white; }
+        .contact-form { background: var(--light); padding: 40px; border-radius: var(--border-radius); box-shadow: var(--shadow); }
+        .form-group { margin-bottom: 20px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 15px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; font-size: 1rem; }
+        .form-group textarea { height: 150px; resize: vertical; }
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><img src="assets/logo.png" alt="XploreDXB Logo" style="height: 75px; width: auto; max-height: 100%;"></a>
+            <nav class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="tours.html" class="nav-link">Tours</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="fleets.html" class="nav-link">Fleets</a></li>
+                    <li><a href="contact.html" class="nav-link active btn-primary">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <div class="container">
+                <h1 class="section-title" style="color: white;">Get in Touch</h1>
+                <p>We are here to help you plan your dream vacation.</p>
+            </div>
+        </div>
+
+        <section class="section">
+            <div class="container split-layout">
+                <div>
+                    <h2 class="section-title">Contact Information</h2>
+                    <p style="margin-bottom: 20px;">Feel free to reach out to us for any inquiries, bookings, or custom packages. Our team is available 24/7 to assist you.</p>
+                    <div style="margin-bottom: 10px;"><strong>Email:</strong> info@xploredxb.ae</div>
+                    <div style="margin-bottom: 10px;"><strong>Phone:</strong> +971 50 123 4567</div>
+                    <div style="margin-bottom: 10px;"><strong>Address:</strong> 123 Sheikh Zayed Road, Downtown Dubai, UAE</div>
+                </div>
+                <div class="contact-form">
+                    <form onsubmit="event.preventDefault(); alert('Message Sent!');">
+                        <div class="form-group"><input type="text" placeholder="Your Name" required></div>
+                        <div class="form-group"><input type="email" placeholder="Your Email" required></div>
+                        <div class="form-group"><textarea placeholder="Your Message" required></textarea></div>
+                        <button type="submit" class="btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container footer-content"><div class="footer-bottom" style="grid-column: 1 / -1; text-align: center;"><p>&copy; 2026 XploreDXB. All rights reserved.</p></div></div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>
