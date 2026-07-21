@@ -611,3 +611,194 @@ ul {
     
     .cta-container h2 { font-size: 2rem; }
 }
+
+/* VIP Experiences Section */
+.vip-section {
+    position: relative;
+    padding: 100px 0;
+    background: url('../assets/images/hero_dubai.png') center/cover fixed;
+    color: var(--white);
+    overflow: hidden;
+}
+.vip-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(17, 17, 17, 0.85);
+    z-index: 1;
+}
+.vip-container {
+    position: relative;
+    z-index: 2;
+}
+.vip-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+.vip-header .section-title {
+    color: var(--primary);
+    font-size: 3rem;
+}
+.vip-header p {
+    font-size: 1.2rem;
+    color: #ccc;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.vip-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+}
+.vip-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+.vip-card::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(201,147,59,0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+}
+.vip-card:hover {
+    transform: translateY(-15px) scale(1.03);
+    border-color: rgba(201, 147, 59, 0.5);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(201,147,59,0.2);
+}
+.vip-card:hover::before {
+    opacity: 1;
+}
+.vip-icon {
+    font-size: 3.5rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+    display: inline-block;
+    transition: transform 0.5s ease;
+}
+.vip-card:hover .vip-icon {
+    transform: rotateY(180deg);
+}
+.vip-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+.vip-card p {
+    color: #aaa;
+    font-size: 1rem;
+    margin-bottom: 25px;
+}
+.vip-card .btn-primary {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary) !important;
+}
+.vip-card:hover .btn-primary {
+    background: var(--primary);
+    color: var(--white) !important;
+}
+
+/* Fleet Supercar Section */
+.supercar-section {
+    background-color: var(--dark);
+    color: var(--white);
+    padding: 100px 0;
+    margin-top: 80px;
+}
+.supercar-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+.supercar-header .section-title {
+    color: var(--white);
+    font-size: 3rem;
+}
+.supercar-header .section-title span {
+    color: var(--primary);
+}
+.supercar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+}
+.supercar-card {
+    background: linear-gradient(145deg, #1a1a1a, #111111);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.supercar-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 50%; height: 100%;
+    background: linear-gradient(to right, transparent, rgba(201,147,59,0.1), transparent);
+    transform: skewX(-25deg);
+    transition: 0.7s;
+}
+.supercar-card:hover::before {
+    left: 150%;
+}
+.supercar-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+    box-shadow: 0 15px 40px rgba(201,147,59,0.2);
+}
+.supercar-img {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    transition: transform 0.5s ease;
+}
+.supercar-card:hover .supercar-img {
+    transform: scale(1.05);
+}
+.supercar-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+.supercar-specs {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 15px 0;
+}
+.spec-item {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #aaa;
+}
+.spec-item span {
+    display: block;
+    color: var(--primary);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+.supercar-card .btn-primary {
+    width: 100%;
+    text-align: center;
+}
+
