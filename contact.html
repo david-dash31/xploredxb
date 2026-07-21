@@ -49,12 +49,26 @@
                     <div style="margin-bottom: 10px;"><strong>Address:</strong> 123 Sheikh Zayed Road, Downtown Dubai, UAE</div>
                 </div>
                 <div class="contact-form">
-                    <form onsubmit="event.preventDefault(); alert('Message Sent!');">
-                        <div class="form-group"><input type="text" placeholder="Your Name" required></div>
-                        <div class="form-group"><input type="email" placeholder="Your Email" required></div>
-                        <div class="form-group"><textarea placeholder="Your Message" required></textarea></div>
-                        <button type="submit" class="btn-primary" style="width: 100%;">Send Message</button>
+                    <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="2e946c89-6ccd-45cb-bc19-ed2066d9d236">
+                        <div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div>
+                        <div class="form-group" style="position: relative;">
+                            <input type="email" name="email" id="emailInput" placeholder="Your Email" required>
+                            <small id="emailError" style="color: #dc3545; display: none; margin-top: 5px; text-align: left; position: absolute; bottom: -20px; left: 0;">Please enter a valid email address.</small>
+                        </div>
+                        <div class="form-group" style="margin-top: 25px;"><textarea name="message" placeholder="Your Message" required></textarea></div>
+                        <div class="form-group" style="position: relative; margin-top: 25px; display: flex; align-items: center; gap: 15px;">
+                            <label id="mathQuestion" style="white-space: nowrap; font-weight: 500; margin: 0;"></label>
+                            <input type="number" id="mathAnswer" placeholder="Your Answer" required style="flex-grow: 1; margin: 0;">
+                            <small id="mathError" style="color: #dc3545; display: none; text-align: left; position: absolute; bottom: -20px; left: 0;">Incorrect answer, please try again.</small>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: 100%; margin-top: 25px;" id="submitBtn">Send Message</button>
                     </form>
+                    <div id="formResult" style="display: none; text-align: center; padding: 20px;">
+                        <h3 style="color: #28a745; margin-bottom: 15px;">Thank you for your message!</h3>
+                        <p style="margin-bottom: 20px;">We have received your inquiry and will get back to you shortly. For an instant response, please reach out to us on WhatsApp.</p>
+                        <a href="https://wa.me/971501234567" target="_blank" class="btn-primary" style="background-color: #25D366; border-color: #25D366; display: inline-block;">Chat on WhatsApp</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -86,5 +100,101 @@
         </div>
     </footer>
     <script src="js/main.js"></script>
+    <script>
+        const form = document.getElementById('contactForm');
+        const result = document.getElementById('formResult');
+        const submitBtn = document.getElementById('submitBtn');
+        const emailField = document.getElementById('emailInput');
+        const emailError = document.getElementById('emailError');
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        // Math Captcha setup
+        const mathQuestionLabel = document.getElementById('mathQuestion');
+        const mathAnswerInput = document.getElementById('mathAnswer');
+        const mathError = document.getElementById('mathError');
+        let num1 = Math.floor(Math.random() * 10) + 1;
+        let num2 = Math.floor(Math.random() * 10) + 1;
+        let correctMathAnswer = num1 + num2;
+        mathQuestionLabel.innerHTML = `What is <span style="font-size: 1.25em; font-weight: 700;">${num1}</span> + <span style="font-size: 1.25em; font-weight: 700;">${num2}</span>?`;
+
+        mathAnswerInput.addEventListener('input', function() {
+            mathError.style.display = 'none';
+            mathAnswerInput.style.borderColor = '#ddd';
+        });
+
+        emailField.addEventListener('input', function() {
+            if (emailField.value === '') {
+                emailError.style.display = 'none';
+                emailField.style.borderColor = '#ddd';
+            } else if (!emailPattern.test(emailField.value)) {
+                emailError.style.display = 'block';
+                emailField.style.borderColor = '#dc3545';
+            } else {
+                emailError.style.display = 'none';
+                emailField.style.borderColor = '#28a745';
+            }
+        });
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (!emailPattern.test(emailField.value)) {
+                emailError.style.display = 'block';
+                emailField.style.borderColor = '#dc3545';
+                return;
+            }
+
+            if (parseInt(mathAnswerInput.value) !== correctMathAnswer) {
+                mathError.style.display = 'block';
+                mathAnswerInput.style.borderColor = '#dc3545';
+                
+                // Generate easier numbers on failure
+                num1 = Math.floor(Math.random() * 5) + 1;
+                num2 = Math.floor(Math.random() * 5) + 1;
+                correctMathAnswer = num1 + num2;
+                mathQuestionLabel.innerHTML = `What is <span style="font-size: 1.25em; font-weight: 700;">${num1}</span> + <span style="font-size: 1.25em; font-weight: 700;">${num2}</span>?`;
+                mathAnswerInput.value = '';
+                
+                return;
+            }
+
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+            
+            submitBtn.innerHTML = "Sending...";
+            submitBtn.style.opacity = "0.7";
+            submitBtn.style.pointerEvents = "none";
+
+            fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                })
+                .then(async (response) => {
+                    let jsonResponse = await response.json();
+                    if (response.status == 200) {
+                        form.style.display = "none";
+                        result.style.display = "block";
+                    } else {
+                        console.log(response);
+                        submitBtn.innerHTML = "Send Message";
+                        submitBtn.style.opacity = "1";
+                        submitBtn.style.pointerEvents = "auto";
+                        alert(jsonResponse.message || "Something went wrong!");
+                    }
+                })
+                .catch(error => {
+                    console.log(error);
+                    submitBtn.innerHTML = "Send Message";
+                    submitBtn.style.opacity = "1";
+                    submitBtn.style.pointerEvents = "auto";
+                    alert("Something went wrong!");
+                });
+        });
+    </script>
 </body>
 </html>
