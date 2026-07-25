@@ -828,3 +828,16 @@ ul {
     color: #FFF;
 }
 
+
+@media (min-width: 992px) {
+    @keyframes panBg {
+        0% { background-position: 0% 35%; }
+        100% { background-position: 100% 35%; }
+    }
+}
+
+@media (min-width: 992px) {
+    .hero {
+        height: 85vh;
+    }
+}

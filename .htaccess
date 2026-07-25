@@ -1,0 +1,15 @@
+RewriteEngine On
+
+# Redirect index.html to root URL
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/
+RewriteRule ^index\.html$ / [R=301,L]
+
+# Redirect other .html URLs to extensionless URLs
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^/]+)\.html\ HTTP/
+RewriteRule ^([^/]+)\.html$ /$1 [R=301,L]
+
+# Resolve extensionless URLs to their .html files internally
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
